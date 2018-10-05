@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h> // isalpha
+int jatem(char letra, char alpha[])// funçao para eliminar letra repetida
+{ 
+ char alphaaa[256];
+ int i, j = 0;
+ for(i = 0; alpha[i] != '\0'; i++) //precorre o a palavra com o alfabeto
+ {
+  if(letra != alpha[i]) // compara a letra com todas as outras
+  {
+   alphaaa[j] = alpha[i];
+   printf("%c", alphaaa[j]);
+   j++;
+  }
+ }
+ for(i = 0; alphaaa[i] != '\0'; i++)
+ {
+ 	alpha[i] = alphaaa[i];
+ }
+}
+void repete(char alpha[], char palavra[]) 
+{
+ char letra;
+ int i, j;
+ char alphadois[256];
+ 
+ for(i = 0; palavra[i] != '\0'; i++) //percorre a palavra inserida
+ {
+  letra = palavra[i]; // recebe o caracter da posiçao i
+  jatem(letra, alpha);
+  printf("\n");
+ }
+}
+void maior(char palavra[])
+{
+ int i;
+ 
+ for(i = 0; palavra[i] != '\0'; i++)
+ {
+  palavra[i] = toupper(palavra[i]); // passa a letra para maiuscula
+ }
+}
+int main()
+{
+ char matriz[5][5], palavra[256], alpha[256]; // precisamos preencher matriz com letras do alfabeto
+ int i, j = 0;
+ 
+ 
+ gets(palavra); //salva palavra
+ for(i = 'A'; i <= 'Z'; i++)   
+ {
+  alpha[j] = i;      //salvando uma letra na posiçao j
+  j++;
+ }
+ 
+ maior(palavra);
+ 
+ repete(alpha, palavra);
+ 
+ return 0;
+}
